@@ -170,3 +170,15 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 /.vs/Weather-App/FileContentIndex
+
+
+# Python
+*.pyc
+__pycache__/
+*.env
+
+# Virtual Environment
+.venv/
+
+# PyCharm
+.idea/
