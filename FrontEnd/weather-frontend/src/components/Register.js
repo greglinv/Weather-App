@@ -9,8 +9,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setMsg(""); // Clear any old messages
-
+    setMsg("");
     try {
       const response = await axios.post("http://localhost:5000/auth/register", {
         username,
@@ -23,29 +22,39 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="container my-4" style={{ maxWidth: "400px" }}>
       <h2>Register</h2>
-      {msg && <p>{msg}</p>}
+      {msg && (
+        <div className="alert alert-info" role="alert">
+          {msg}
+        </div>
+      )}
       <form onSubmit={handleRegister}>
-        <div>
-          <label>Username:{" "}</label>
+        <div className="mb-3">
+          <label className="form-label">Username</label>
           <input
             type="text"
+            className="form-control"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Password:{" "}</label>
+
+        <div className="mb-3">
+          <label className="form-label">Password</label>
           <input
             type="password"
+            className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Register</button>
+
+        <button className="btn btn-primary" type="submit">
+          Register
+        </button>
       </form>
     </div>
   );

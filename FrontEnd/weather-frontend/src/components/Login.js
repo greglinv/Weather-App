@@ -8,7 +8,7 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
-  const navigate = useNavigate(); // <-- React Router hook
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,10 +21,8 @@ const Login = () => {
       });
       const { access_token } = response.data;
       if (access_token) {
-        // Store the token
         setToken(access_token);
         setMsg("Login successful!");
-        // Redirect to main page
         navigate("/");
       }
     } catch (err) {
@@ -33,42 +31,37 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container my-4" style={{ maxWidth: "400px" }}>
       <h2>Login</h2>
-      {msg && <p>{msg}</p>}
+      {msg && (
+        <div className="alert alert-info" role="alert">
+          {msg}
+        </div>
+      )}
       <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:{" "}</label>
+        <div className="mb-3">
+          <label className="form-label">Username</label>
           <input
             type="text"
+            className="form-control"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Password:{" "}</label>
+        
+        <div className="mb-3">
+          <label className="form-label">Password</label>
           <input
             type="password"
+            className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
 
-        {/* Example button styling with inline CSS */}
-        <button
-          type="submit"
-          style={{
-            backgroundColor: "#007bff",
-            color: "#fff",
-            border: "none",
-            padding: "8px 16px",
-            marginTop: "10px",
-            cursor: "pointer",
-            borderRadius: "4px",
-          }}
-        >
+        <button className="btn btn-primary" type="submit">
           Login
         </button>
       </form>

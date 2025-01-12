@@ -1,5 +1,6 @@
 // src/App.js
 import React from "react";
+import ReactDOM from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -10,26 +11,33 @@ import Register from "./components/Register";
 
 import "./App.css";
 
+ReactDOM.render(<App />, document.getElementById("root"));
+
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
 
-        <main style={{ padding: "1rem" }}>
+        <main>
           <Routes>
             <Route
               path="/"
               element={
-                <>
-                  <Weather />
-                  <Forecast />
-                </>
+                <div className="container my-4">
+                  <div className="row">
+                    <div className="col-md-6 mb-3">
+                      <Weather />
+                    </div>
+                    <div className="col-md-6 mb-3">
+                      <Forecast />
+                    </div>
+                  </div>
+                </div>
               }
             />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            {/* Optionally add a 404 catch-all route */}
             <Route path="*" element={<h2>Page Not Found</h2>} />
           </Routes>
         </main>
