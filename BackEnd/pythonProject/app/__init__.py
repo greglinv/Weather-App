@@ -10,7 +10,6 @@ def create_app():
     CORS(app)
 
     # Set a secret key for JWT
-    # In production, make sure this is set via environment variables!
     app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "change_me_in_prod")
 
     jwt = JWTManager(app)
