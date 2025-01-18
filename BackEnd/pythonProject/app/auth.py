@@ -1,15 +1,9 @@
 from flask import Blueprint, request, jsonify
 from passlib.hash import bcrypt
-from flask_jwt_extended import (
-    JWTManager, create_access_token, get_jwt_identity,
-    jwt_required
-)
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from .models import db, User
 
 auth = Blueprint("auth", __name__)
-
-# In-memory "user database" for example only
-# In production, use a real database (e.g., SQLite, Postgres, etc.)
-users_db = {}
 
 @auth.route("/register", methods=["POST"])
 def register():
@@ -20,12 +14,13 @@ def register():
     username = data["username"].lower().strip()
     password = data["password"]
 
-    if username in users_db:
+    if User.query.filter_by(username=username).first():
         return jsonify({"error": "User already exists"}), 400
 
-    # Hash the password
     hashed_password = bcrypt.hash(password)
-    users_db[username] = hashed_password
+    new_user = User(username=username, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
 
     return jsonify({"message": f"User {username} registered successfully"}), 201
 
@@ -38,17 +33,10 @@ def login():
     username = data["username"].lower().strip()
     password = data["password"]
 
-    # Check if user exists
-    if username not in users_db:
+    user = User.query.filter_by(username=username).first()
+    if not user or not bcrypt.verify(password, user.password):
         return jsonify({"error": "Invalid username or password"}), 401
 
-    hashed_password = users_db[username]
-
-    # Verify password
-    if not bcrypt.verify(password, hashed_password):
-        return jsonify({"error": "Invalid username or password"}), 401
-
-    # Create JWT
     access_token = create_access_token(identity=username)
     return jsonify({"access_token": access_token}), 200
 
