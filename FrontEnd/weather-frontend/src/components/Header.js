@@ -1,35 +1,18 @@
-// src/components/Header.js
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { getToken, removeToken } from "../auth";
-import axios from "axios";
 import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import { getToken, removeToken } from "../auth";
+import { UserContext } from "../context/UserContext";
 
 const Header = () => {
-  const [username, setUsername] = useState(null);
+  // Pull out username & setUsername from the UserContext
+  const { username, setUsername, fetchUsername } = useContext(UserContext);
 
-  useEffect(() => {
-    const token = getToken();
-    if (token) {
-      axios
-        .get("http://localhost:5000/auth/protected", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((res) => {
-          // Suppose the server returns { "message": "Hello, john! ..." }
-          const text = res.data.message || "";
-          const match = text.match(/Hello, (.+)!/);
-          if (match) setUsername(match[1]);
-        })
-        .catch(() => {
-          removeToken();
-        });
-    }
-  }, []);
+  // (Optional) If you ever need to re-fetch user data, you can call fetchUsername(getToken())
 
   const handleLogout = () => {
     removeToken();
-    setUsername(null);
+    setUsername(null); // Clear the local user context
   };
 
   return (

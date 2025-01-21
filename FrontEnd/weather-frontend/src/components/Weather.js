@@ -1,4 +1,3 @@
-// src/components/Weather.js
 import React, { useState } from "react";
 import axios from "axios";
 import { getToken } from "../auth";
@@ -10,11 +9,12 @@ const Weather = () => {
 
   const fetchWeather = async () => {
     try {
-      const token = getToken(); // In case it's protected
+      const token = getToken();
       const response = await axios.get("http://localhost:5000/weather", {
         headers: { Authorization: `Bearer ${token}` },
         params: { city },
       });
+
       if (response.data.error) {
         setError(response.data.error);
         setWeatherData(null);
@@ -25,6 +25,13 @@ const Weather = () => {
     } catch (err) {
       setWeatherData(null);
       setError("Something went wrong. Please try again.");
+    }
+  };
+
+  // The key part is adding onKeyDown below:
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      fetchWeather();
     }
   };
 
@@ -40,9 +47,10 @@ const Weather = () => {
               placeholder="Enter city"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              onKeyDown={handleKeyDown}  //  Bind the Enter key event
             />
             <button 
-              className="btn btn-primary" 
+              className="btn btn-primary"
               onClick={fetchWeather}
             >
               Get Weather

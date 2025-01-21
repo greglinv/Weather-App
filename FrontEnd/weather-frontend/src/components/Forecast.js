@@ -1,4 +1,3 @@
-// src/components/Forecast.js
 import React, { useState } from "react";
 import axios from "axios";
 import { getToken } from "../auth";
@@ -23,6 +22,13 @@ const Forecast = () => {
     }
   };
 
+  // Add an onKeyDown event handler:
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      fetchForecast();
+    }
+  };
+
   return (
     <div className="container my-4">
       <h2>Forecast</h2>
@@ -35,6 +41,7 @@ const Forecast = () => {
               placeholder="Enter city"
               value={city}
               onChange={(e) => setCity(e.target.value)}
+              onKeyDown={handleKeyDown}  // <<--- Bind the Enter key
             />
             <button
               className="btn btn-primary"
@@ -57,7 +64,8 @@ const Forecast = () => {
                 <ul className="list-group list-group-flush">
                   {forecastData.forecast.map((day, index) => (
                     <li key={index} className="list-group-item">
-                      <strong>{day.date}:</strong> {day.temperature_celsius}°C, {day.weather}
+                      <strong>{day.date}:</strong> {day.temperature_celsius}°C,{" "}
+                      {day.weather}
                     </li>
                   ))}
                 </ul>

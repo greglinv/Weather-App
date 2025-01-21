@@ -1,14 +1,17 @@
-// src/components/Login.js
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { setToken } from "../auth";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [usernameInput, setUsernameInput] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
+
+  // Pull in the fetchUsername function from context
+  const { fetchUsername } = useContext(UserContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -16,13 +19,21 @@ const Login = () => {
 
     try {
       const response = await axios.post("http://localhost:5000/auth/login", {
-        username,
+        username: usernameInput,
         password,
       });
       const { access_token } = response.data;
       if (access_token) {
+        // 1) Store the token
         setToken(access_token);
+        
+        // 2) Immediately fetch the username from the server,
+        //    which sets it in our Context state
+        await fetchUsername(access_token);
+
         setMsg("Login successful!");
+
+        // 3) Navigate to home
         navigate("/");
       }
     } catch (err) {
@@ -44,8 +55,8 @@ const Login = () => {
           <input
             type="text"
             className="form-control"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={usernameInput}
+            onChange={(e) => setUsernameInput(e.target.value)}
             required
           />
         </div>
