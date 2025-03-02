@@ -9,6 +9,7 @@ import Weather from "./components/Weather";
 import Forecast from "./components/Forecast";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Settings from "./components/Settings";
 
 import "./App.css";
 
@@ -40,6 +41,7 @@ function App() {
               />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<h2>Page Not Found</h2>} />
             </Routes>
           </main>

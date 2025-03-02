@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify
 import requests
 import os
+from flask_jwt_extended import jwt_required, get_jwt_identity
+from .models import User
 
 weather_routes = Blueprint('weather_routes', __name__)
 
@@ -11,7 +13,9 @@ def log_request():
     print(f"Request received: {request.url}")
 
 @weather_routes.route("/weather", methods=["GET"])
+@jwt_required(optional=True)  # <-- ALLOWS logged in or anon
 def get_weather():
+    current_user = get_jwt_identity()
     city = request.args.get("city", default="London")
     url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}"
     response = requests.get(url)
@@ -25,11 +29,25 @@ def get_weather():
 
     if response.status_code == 200:
         data = response.json()
+
+        # Convert from Kelvin
+        kelvin_temp = data["main"]["temp"]
+        celsius_temp = round(kelvin_temp - 273.15, 2)
+        fahrenheit_temp = round((kelvin_temp - 273.15) * 9 / 5 + 32, 2)
+
+        # Default unit to 'celsius' if user is not logged in
+        preferred_unit = "celsius"
+        if current_user:
+            user = User.query.filter_by(username=current_user).first()
+            if user and user.unit_preference == "fahrenheit":
+                preferred_unit = "fahrenheit"
+
         summary = {
             "city": data["name"],
-            "temperature_kelvin": data["main"]["temp"],
-            "temperature_celsius": round(data["main"]["temp"] - 273.15, 2),
-            "temperature_fahrenheit": round((data["main"]["temp"] - 273.15) * 9 / 5 + 32, 2),
+            "temperature_kelvin": kelvin_temp,
+            "temperature_celsius": celsius_temp,
+            "temperature_fahrenheit": fahrenheit_temp,
+            "preferred_unit": preferred_unit,
             "weather": data["weather"][0]["description"],
             "humidity": data["main"]["humidity"],
             "wind_speed": data["wind"]["speed"],

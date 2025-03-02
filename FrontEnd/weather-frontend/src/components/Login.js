@@ -1,3 +1,4 @@
+// src/components/Login.js
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { setToken } from "../auth";
@@ -10,8 +11,8 @@ const Login = () => {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
-  // Pull in the fetchUsername function from context
-  const { fetchUsername } = useContext(UserContext);
+  // Pull in the fetchUserData function from context
+  const { fetchUserData } = useContext(UserContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -26,10 +27,10 @@ const Login = () => {
       if (access_token) {
         // 1) Store the token
         setToken(access_token);
-        
-        // 2) Immediately fetch the username from the server,
-        //    which sets it in our Context state
-        await fetchUsername(access_token);
+
+        // 2) Immediately fetch the user data (username, unit_preference) 
+        //    from the server, which sets it in our Context state
+        await fetchUserData(access_token);
 
         setMsg("Login successful!");
 

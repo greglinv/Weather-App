@@ -5,14 +5,11 @@ import { getToken, removeToken } from "../auth";
 import { UserContext } from "../context/UserContext";
 
 const Header = () => {
-  // Pull out username & setUsername from the UserContext
-  const { username, setUsername, fetchUsername } = useContext(UserContext);
-
-  // (Optional) If you ever need to re-fetch user data, you can call fetchUsername(getToken())
+  const { user, setUser } = useContext(UserContext);
 
   const handleLogout = () => {
     removeToken();
-    setUsername(null); // Clear the local user context
+    setUser(null);
   };
 
   return (
@@ -22,10 +19,10 @@ const Header = () => {
           Weather App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {!username ? (
+            {!user ? (
               <>
                 <Nav.Link as={Link} to="/login">
                   Login
@@ -36,8 +33,13 @@ const Header = () => {
               </>
             ) : (
               <>
+                {/* Here’s the Settings link, only shown if logged in */}
+                <Nav.Link as={Link} to="/settings">
+                  Settings
+                </Nav.Link>
+                
                 <Navbar.Text className="me-2">
-                  Welcome, {username}
+                  Welcome, {user.username}
                 </Navbar.Text>
                 <Button variant="outline-light" size="sm" onClick={handleLogout}>
                   Logout
