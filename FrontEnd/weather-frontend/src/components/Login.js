@@ -25,16 +25,15 @@ const Login = () => {
       });
       const { access_token } = response.data;
       if (access_token) {
-        // 1) Store the token
+        //Store token
         setToken(access_token);
 
-        // 2) Immediately fetch the user data (username, unit_preference) 
-        //    from the server, which sets it in our Context state
+        //Immediately fetch the user data
         await fetchUserData(access_token);
 
         setMsg("Login successful!");
 
-        // 3) Navigate to home
+        //Navigate to home
         navigate("/");
       }
     } catch (err) {

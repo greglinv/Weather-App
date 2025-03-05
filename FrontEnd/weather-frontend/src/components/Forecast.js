@@ -22,7 +22,7 @@ const Forecast = () => {
     }
   };
 
-  // Add an onKeyDown event handler:
+  // OnKeyDown event handler
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       fetchForecast();
@@ -41,7 +41,7 @@ const Forecast = () => {
               placeholder="Enter city"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              onKeyDown={handleKeyDown}  // <<--- Bind the Enter key
+              onKeyDown={handleKeyDown}  // <<--- Bind Enter key
             />
             <button
               className="btn btn-primary"

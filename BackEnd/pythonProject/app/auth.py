@@ -21,7 +21,7 @@ def register():
     # Hash the password
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
-    # Create new User with default "celsius" preference
+    # Create new User with default "celsius"
     new_user = User(
         username=username,
         password=hashed_password.decode('utf-8'),

@@ -10,7 +10,7 @@ const Weather = () => {
 
   const fetchWeather = async () => {
     try {
-      // Only add the Authorization header if we actually have a valid token
+      // Only add Authorization header if we actually have a valid token
       const token = getToken();
       const config = {
         params: { city },
@@ -41,13 +41,13 @@ const Weather = () => {
     }
   };
 
-  // Decide which temperature to show based on the "preferred_unit" returned by the server
+  // Decide which temperature to show
   let displayedTemperature = null;
   if (weatherData) {
     if (weatherData.preferred_unit === "fahrenheit") {
       displayedTemperature = `${weatherData.temperature_fahrenheit} °F`;
     } else {
-      // Default to celsius if the user is not logged in or if user prefers celsius
+      // Default to celsius
       displayedTemperature = `${weatherData.temperature_celsius} °C`;
     }
   }

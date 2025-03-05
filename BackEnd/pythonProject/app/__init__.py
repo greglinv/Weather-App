@@ -27,10 +27,6 @@ def create_app():
     # Initialize JWT manager
     jwt = JWTManager(app)
 
-    # If you plan to use migrations exclusively, comment this out:
-    # with app.app_context():
-    #     db.create_all()  # Create tables if they don't exist
-
     from .routes import weather_routes
     from .auth import auth
     app.register_blueprint(weather_routes)

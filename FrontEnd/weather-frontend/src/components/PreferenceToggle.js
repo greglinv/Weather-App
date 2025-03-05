@@ -5,17 +5,14 @@ import { getToken } from "../auth";
 import { UserContext } from "../context/UserContext";
 
 const PreferenceToggle = () => {
-  // Pull the user object and fetchUserData from context
+  // Pull the user object and fetchUserData
   const { user, setUser, fetchUserData } = useContext(UserContext);
 
-  // Local state for the "selectedPreference"
-  // If user is logged in, start with user.unit_preference; otherwise default to "celsius"
   const [selectedPreference, setSelectedPreference] = useState(
     user?.unit_preference || "celsius"
   );
 
-  // Whenever the "user" changes in context, update local state
-  // (e.g., if someone logs out or logs in)
+
   useEffect(() => {
     if (user && user.unit_preference) {
       setSelectedPreference(user.unit_preference);
@@ -26,7 +23,6 @@ const PreferenceToggle = () => {
     // Update local state immediately so the UI toggles
     setSelectedPreference(newPref);
 
-    // If user is not logged in, you could either do nothing or show a message
     if (!user) {
       console.log("Must be logged in to change preference!");
       return;
@@ -45,15 +41,14 @@ const PreferenceToggle = () => {
         { unit_preference: newPref },
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      // After successfully updating the preference, re-fetch user data
-      // so our context is accurate
+      // After successfully updating the preference
       await fetchUserData(token);
     } catch (err) {
       console.error("Error updating preference:", err.response?.data || err.message);
     }
   };
 
-  // If user is not logged in, you might disable or hide the toggle
+  // If user is not logged in disable or hide the toggle
   if (!user) {
     return (
       <p>Please <a href="/login">login</a> to change your unit preference.</p>

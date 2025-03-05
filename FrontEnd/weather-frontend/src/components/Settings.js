@@ -7,7 +7,7 @@ const Settings = () => {
     <div className="container">
       <h2>Settings</h2>
       <PreferenceToggle />
-      {/* possibly more settings here */}
+      {/* more settings here */}
     </div>
   );
 };

@@ -33,7 +33,7 @@ const Header = () => {
               </>
             ) : (
               <>
-                {/* Here’s the Settings link, only shown if logged in */}
+                {/*Settings link only shown if logged in */}
                 <Nav.Link as={Link} to="/settings">
                   Settings
                 </Nav.Link>
