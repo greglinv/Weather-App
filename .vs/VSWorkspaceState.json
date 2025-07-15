@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\BackEnd",
+    "\\BackEnd\\pythonProject",
+    "\\BackEnd\\pythonProject\\app",
+    "\\BackEnd\\pythonProject\\migrations",
+    "\\BackEnd\\pythonProject\\migrations\\versions",
+    "\\FrontEnd",
+    "\\FrontEnd\\weather-frontend",
+    "\\FrontEnd\\weather-frontend\\public",
+    "\\FrontEnd\\weather-frontend\\src"
   ],
-  "SelectedNode": "\\FrontEnd",
+  "SelectedNode": "\\BackEnd\\pythonProject\\main.py",
   "PreviewInSolutionExplorer": false
 }

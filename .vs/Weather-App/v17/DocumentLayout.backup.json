@@ -1,7 +1,52 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Projects\\Weather-App\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Header.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FrontEnd\\weather-frontend\\src\\components\\Header.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Weather.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FrontEnd\\weather-frontend\\src\\components\\Weather.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\favorites.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEnd\\pythonProject\\app\\favorites.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Favorites.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FrontEnd\\weather-frontend\\src\\components\\Favorites.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FrontEnd\\weather-frontend\\src\\App.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEnd\\pythonProject\\app\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEnd\\pythonProject\\main.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\test_app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEnd\\pythonProject\\test_app.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\auth.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEnd\\pythonProject\\app\\auth.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEnd\\pythonProject\\app\\routes.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BackEnd\\pythonProject\\app\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +54,151 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "__init__.py",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\__init__.py",
+              "RelativeDocumentMoniker": "BackEnd\\pythonProject\\app\\__init__.py",
+              "ToolTip": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\__init__.py",
+              "RelativeToolTip": "BackEnd\\pythonProject\\app\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-07-15T21:09:34.656Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Header.js",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Header.js",
+              "RelativeDocumentMoniker": "FrontEnd\\weather-frontend\\src\\components\\Header.js",
+              "ToolTip": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Header.js",
+              "RelativeToolTip": "FrontEnd\\weather-frontend\\src\\components\\Header.js",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-15T21:24:03.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Weather.js",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Weather.js",
+              "RelativeDocumentMoniker": "FrontEnd\\weather-frontend\\src\\components\\Weather.js",
+              "ToolTip": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Weather.js",
+              "RelativeToolTip": "FrontEnd\\weather-frontend\\src\\components\\Weather.js",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAH8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-15T21:15:26.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.js",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\App.js",
+              "RelativeDocumentMoniker": "FrontEnd\\weather-frontend\\src\\App.js",
+              "ToolTip": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\App.js",
+              "RelativeToolTip": "FrontEnd\\weather-frontend\\src\\App.js",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-15T21:12:26.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Favorites.js",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Favorites.js",
+              "RelativeDocumentMoniker": "FrontEnd\\weather-frontend\\src\\components\\Favorites.js",
+              "ToolTip": "D:\\Projects\\Weather-App\\FrontEnd\\weather-frontend\\src\\components\\Favorites.js",
+              "RelativeToolTip": "FrontEnd\\weather-frontend\\src\\components\\Favorites.js",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAiwBYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-15T21:12:03.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "favorites.py",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\favorites.py",
+              "RelativeDocumentMoniker": "BackEnd\\pythonProject\\app\\favorites.py",
+              "ToolTip": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\favorites.py",
+              "RelativeToolTip": "BackEnd\\pythonProject\\app\\favorites.py",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-07-15T21:09:59.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "models.py",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\models.py",
+              "RelativeDocumentMoniker": "BackEnd\\pythonProject\\app\\models.py",
+              "ToolTip": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\models.py",
+              "RelativeToolTip": "BackEnd\\pythonProject\\app\\models.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-07-15T21:09:42.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "routes.py",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\routes.py",
+              "RelativeDocumentMoniker": "BackEnd\\pythonProject\\app\\routes.py",
+              "ToolTip": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\routes.py",
+              "RelativeToolTip": "BackEnd\\pythonProject\\app\\routes.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-07-15T21:08:52.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "auth.py",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\auth.py",
+              "RelativeDocumentMoniker": "BackEnd\\pythonProject\\app\\auth.py",
+              "ToolTip": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\app\\auth.py",
+              "RelativeToolTip": "BackEnd\\pythonProject\\app\\auth.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-07-15T21:08:48.822Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "test_app.py",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\test_app.py",
+              "RelativeDocumentMoniker": "BackEnd\\pythonProject\\test_app.py",
+              "ToolTip": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\test_app.py",
+              "RelativeToolTip": "BackEnd\\pythonProject\\test_app.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-07-15T20:02:45.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "main.py",
+              "DocumentMoniker": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\main.py",
+              "RelativeDocumentMoniker": "BackEnd\\pythonProject\\main.py",
+              "ToolTip": "D:\\Projects\\Weather-App\\BackEnd\\pythonProject\\main.py",
+              "RelativeToolTip": "BackEnd\\pythonProject\\main.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-07-15T20:02:41.919Z",
+              "EditorCaption": ""
             }
           ]
         }

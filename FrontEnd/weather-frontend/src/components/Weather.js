@@ -4,99 +4,124 @@ import axios from "axios";
 import { getToken } from "../auth";
 
 const Weather = () => {
-  const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState("");
+    const [city, setCity] = useState("");
+    const [weatherData, setWeatherData] = useState(null);
+    const [error, setError] = useState("");
 
-  const fetchWeather = async () => {
-    try {
-      // Only add Authorization header if we actually have a valid token
-      const token = getToken();
-      const config = {
-        params: { city },
-      };
-      if (token) {
-        config.headers = { Authorization: `Bearer ${token}` };
-      }
+    const fetchWeather = async () => {
+        try {
+            // Only add Authorization header if we actually have a valid token
+            const token = getToken();
+            const config = {
+                params: { city },
+            };
+            if (token) {
+                config.headers = { Authorization: `Bearer ${token}` };
+            }
 
-      const response = await axios.get("http://localhost:5000/weather", config);
+            const response = await axios.get("http://localhost:5000/weather", config);
 
-      if (response.data.error) {
-        setError(response.data.error);
-        setWeatherData(null);
-      } else {
-        setWeatherData(response.data);
-        setError("");
-      }
-    } catch (err) {
-      setWeatherData(null);
-      setError("Something went wrong. Please try again.");
+            if (response.data.error) {
+                setError(response.data.error);
+                setWeatherData(null);
+            } else {
+                setWeatherData(response.data);
+                setError("");
+            }
+        } catch (err) {
+            setWeatherData(null);
+            setError("Something went wrong. Please try again.");
+        }
+    };
+
+    const addFavorite = async () => {
+        const token = getToken();
+        if (!token) {
+            return alert("Please log in to save favorites.");
+        }
+        try {
+            await axios.post(
+                "http://localhost:5000/favorites",
+                { city },
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
+            alert(`${city} added to favorites!`);
+        } catch (err) {
+            console.error(err);
+            alert("Couldn’t add favorite. Try again.");
+        }
+    };
+
+
+    // Allow pressing Enter to trigger the fetch
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            fetchWeather();
+        }
+    };
+
+    // Decide which temperature to show
+    let displayedTemperature = null;
+    if (weatherData) {
+        if (weatherData.preferred_unit === "fahrenheit") {
+            displayedTemperature = `${weatherData.temperature_fahrenheit} °F`;
+        } else {
+            // Default to celsius
+            displayedTemperature = `${weatherData.temperature_celsius} °C`;
+        }
     }
-  };
 
-  // Allow pressing Enter to trigger the fetch
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      fetchWeather();
-    }
-  };
+    return (
+        <div className="container my-4">
+            <h2>Weather</h2>
+            <div className="row">
+                <div className="col-md-6 offset-md-3">
+                    <div className="input-group mb-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Enter city"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <button
+                            className="btn btn-primary"
+                            onClick={fetchWeather}
+                        >
+                            Get Weather
+                        </button>
+                    </div>
 
-  // Decide which temperature to show
-  let displayedTemperature = null;
-  if (weatherData) {
-    if (weatherData.preferred_unit === "fahrenheit") {
-      displayedTemperature = `${weatherData.temperature_fahrenheit} °F`;
-    } else {
-      // Default to celsius
-      displayedTemperature = `${weatherData.temperature_celsius} °C`;
-    }
-  }
+                    {error && (
+                        <div className="alert alert-danger" role="alert">
+                            {error}
+                        </div>
+                    )}
 
-  return (
-    <div className="container my-4">
-      <h2>Weather</h2>
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Enter city"
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              onKeyDown={handleKeyDown}
-            />
-            <button 
-              className="btn btn-primary"
-              onClick={fetchWeather}
-            >
-              Get Weather
-            </button>
-          </div>
-          
-          {error && (
-            <div className="alert alert-danger" role="alert">
-              {error}
+                    {weatherData && !error && (
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title">{weatherData.city}</h5>
+                                <p className="card-text">
+                                    <strong>Temperature:</strong> {displayedTemperature}<br />
+                                    <strong>Weather:</strong> {weatherData.weather}<br />
+                                    <strong>Humidity:</strong> {weatherData.humidity}%<br />
+                                    <strong>Wind Speed:</strong> {weatherData.wind_speed} m/s
+                                </p>
+                                <button
+                                    className="btn btn-outline-warning btn-lg"
+                                    onClick={addFavorite}
+                                >
+                                    Favorite+
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
-          )}
-
-          {weatherData && !error && (
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">{weatherData.city}</h5>
-                <p className="card-text">
-                  <strong>Temperature:</strong> {displayedTemperature} <br />
-                  <strong>Weather:</strong> {weatherData.weather} <br />
-                  <strong>Humidity:</strong> {weatherData.humidity}% <br />
-                  <strong>Wind Speed:</strong> {weatherData.wind_speed} m/s
-                </p>
-              </div>
-            </div>
-          )}
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Weather;

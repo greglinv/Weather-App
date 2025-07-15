@@ -4,6 +4,7 @@ from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate  # <-- NEW IMPORT
 from dotenv import load_dotenv
 from .models import db
+from .favorites import favorites_bp
 import os
 
 # Create a global Migrate instance
@@ -29,7 +30,11 @@ def create_app():
 
     from .routes import weather_routes
     from .auth import auth
+    from .favorites import favorites_bp
+
     app.register_blueprint(weather_routes)
     app.register_blueprint(auth, url_prefix="/auth")
+    app.register_blueprint(favorites_bp)
+
 
     return app
