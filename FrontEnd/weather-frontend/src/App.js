@@ -1,10 +1,11 @@
 // src/App.js
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import Header from "./components/Header";
+import FavoritesDashboard from "./components/FavoritesDashboard";
 import Weather from "./components/Weather";
 import Forecast from "./components/Forecast";
 import Login from "./components/Login";
@@ -17,11 +18,25 @@ import "./App.css";
 ReactDOM.render(<App />, document.getElementById("root"));
 
 function App() {
+    const [selectedCity, setSelectedCity] = useState("");
+    const [favoriteTrigger, setFavoriteTrigger] = useState(0);
+
+    // Increment trigger to refresh the favorites dashboard
+    const handleFavoriteAdded = () => {
+        setFavoriteTrigger(prev => prev + 1);
+    };
+
     return (
         <UserProvider>
             <Router>
                 <div className="App">
                     <Header />
+
+                    {/* Favorites bar under the header, reloads on trigger */}
+                    <FavoritesDashboard
+                        onSelectCity={setSelectedCity}
+                        reloadTrigger={favoriteTrigger}
+                    />
 
                     <main>
                         <Routes>
@@ -31,7 +46,11 @@ function App() {
                                     <div className="container my-4">
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
-                                                <Weather />
+                                                {/* Pass selectedCity and update callback */}
+                                                <Weather
+                                                    defaultCity={selectedCity}
+                                                    onFavoriteAdded={handleFavoriteAdded}
+                                                />
                                             </div>
                                             <div className="col-md-6 mb-3">
                                                 <Forecast />
@@ -49,7 +68,7 @@ function App() {
                     </main>
 
                     <footer className="App-footer">
-                        <p>&copy; 2024 Gregory's Weather App</p>
+                        <p>© 2024 Gregory's Weather App</p>
                     </footer>
                 </div>
             </Router>

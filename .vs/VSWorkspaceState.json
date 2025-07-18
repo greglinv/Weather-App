@@ -9,8 +9,9 @@
     "\\FrontEnd",
     "\\FrontEnd\\weather-frontend",
     "\\FrontEnd\\weather-frontend\\public",
-    "\\FrontEnd\\weather-frontend\\src"
+    "\\FrontEnd\\weather-frontend\\src",
+    "\\FrontEnd\\weather-frontend\\src\\components"
   ],
-  "SelectedNode": "\\BackEnd\\pythonProject\\main.py",
+  "SelectedNode": "\\BackEnd\\pythonProject\\app\\models.py",
   "PreviewInSolutionExplorer": false
 }

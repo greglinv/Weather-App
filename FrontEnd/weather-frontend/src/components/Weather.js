@@ -1,25 +1,27 @@
 // src/components/Weather.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { getToken } from "../auth";
 
-const Weather = () => {
-    const [city, setCity] = useState("");
+const Weather = ({ defaultCity = "", onFavoriteAdded }) => {
+    const [city, setCity] = useState(defaultCity);
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState("");
 
-    const fetchWeather = async () => {
+    // Fetch weather data for a given city (param takes precedence)
+    const fetchWeather = async (cityToFetch) => {
+        const queryCity = cityToFetch || city;
         try {
-            // Only add Authorization header if we actually have a valid token
             const token = getToken();
-            const config = {
-                params: { city },
-            };
+            const config = { params: { city: queryCity } };
             if (token) {
                 config.headers = { Authorization: `Bearer ${token}` };
             }
 
-            const response = await axios.get("http://localhost:5000/weather", config);
+            const response = await axios.get(
+                "http://localhost:5000/weather",
+                config
+            );
 
             if (response.data.error) {
                 setError(response.data.error);
@@ -34,6 +36,15 @@ const Weather = () => {
         }
     };
 
+    // When defaultCity prop changes, update input and fetch immediately
+    useEffect(() => {
+        if (defaultCity && defaultCity !== city) {
+            setCity(defaultCity);
+            fetchWeather(defaultCity);
+        }
+    }, [defaultCity]);
+
+    // Add current city to favorites and notify parent
     const addFavorite = async () => {
         const token = getToken();
         if (!token) {
@@ -46,12 +57,12 @@ const Weather = () => {
                 { headers: { Authorization: `Bearer ${token}` } }
             );
             alert(`${city} added to favorites!`);
+            onFavoriteAdded?.();
         } catch (err) {
             console.error(err);
             alert("Couldn’t add favorite. Try again.");
         }
     };
-
 
     // Allow pressing Enter to trigger the fetch
     const handleKeyDown = (e) => {
@@ -66,7 +77,6 @@ const Weather = () => {
         if (weatherData.preferred_unit === "fahrenheit") {
             displayedTemperature = `${weatherData.temperature_fahrenheit} °F`;
         } else {
-            // Default to celsius
             displayedTemperature = `${weatherData.temperature_celsius} °C`;
         }
     }
@@ -85,10 +95,7 @@ const Weather = () => {
                             onChange={(e) => setCity(e.target.value)}
                             onKeyDown={handleKeyDown}
                         />
-                        <button
-                            className="btn btn-primary"
-                            onClick={fetchWeather}
-                        >
+                        <button className="btn btn-primary" onClick={() => fetchWeather()}>
                             Get Weather
                         </button>
                     </div>
@@ -110,7 +117,7 @@ const Weather = () => {
                                     <strong>Wind Speed:</strong> {weatherData.wind_speed} m/s
                                 </p>
                                 <button
-                                    className="btn btn-outline-warning btn-lg"
+                                    className="btn btn-primary mt-2"
                                     onClick={addFavorite}
                                 >
                                     Favorite+

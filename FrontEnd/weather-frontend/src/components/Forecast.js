@@ -41,7 +41,7 @@ const Forecast = () => {
               placeholder="Enter city"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              onKeyDown={handleKeyDown}  // <<--- Bind Enter key
+              onKeyDown={handleKeyDown}  //Bind Enter key
             />
             <button
               className="btn btn-primary"
